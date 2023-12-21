@@ -1,4 +1,4 @@
-from website.views import index_view, about_view, contact_view,  test_view
+from website.views import index_view, about_view, contact_view
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
