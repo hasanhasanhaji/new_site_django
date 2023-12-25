@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from blog.models import post
 from django.utils import timezone
 # Create your views here.
@@ -7,15 +7,12 @@ from django.utils import timezone
 def blog_view(request):
     posts = post.objects.filter(status=1, published_date__lte=timezone.now())
 
-    # Update counted_views for each post
-    for p in posts:
-        p.counted_views += 1
-        p.save()
-
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
 
-def blog_single(request):
-    return render(request,'blog/blog-single.html')
+def blog_single(request, pid):
+    pos = get_object_or_404(post, pk=pid)
+    context = {'post': pos}
+    return render(request, 'blog/blog-single.html', context)
 
