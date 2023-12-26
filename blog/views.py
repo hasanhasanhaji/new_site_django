@@ -12,7 +12,7 @@ def blog_view(request):
 
 
 def blog_single(request, pid):
-    pos = get_object_or_404(post, pk=pid, status =1)
+    pos = get_object_or_404(post, pk=pid, status=1, published_date__lte=timezone.now())
 
     # Increment the counted_views for the current post
     pos.counted_views += 1
