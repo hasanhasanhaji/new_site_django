@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 def blog_view(request):
-    posts = post.objects.filter(status=1, published_date__lte=timezone.now())
+    posts = post.objects.filter(status=1, published_date__lte=timezone.now()).order_by('-published_date')
 
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
