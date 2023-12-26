@@ -18,7 +18,7 @@ class post(models.Model):
     content = models.TextField()
 
     # tag
-    category = models.ManyToManyField(Category,)
+    category = models.ManyToManyField(Category, )
 
     counted_views = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
