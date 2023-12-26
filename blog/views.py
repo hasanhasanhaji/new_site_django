@@ -12,12 +12,22 @@ def blog_view(request):
 
 
 def blog_single(request, pid):
-    pos = get_object_or_404(post, pk=pid, status=1, published_date__lte=timezone.now())
+    current_post = get_object_or_404(post, pk=pid, status=1, published_date__lte=timezone.now())
+
+    # Get the next and previous posts based on the current post's creation date
+    next_post = post.objects.filter(status=1, published_date__lte=timezone.now(),
+                                    created_date__gt=current_post.created_date).order_by('created_date').first()
+    prev_post = post.objects.filter(status=1, published_date__lte=timezone.now(),
+                                    created_date__lt=current_post.created_date).order_by('-created_date').first()
 
     # Increment the counted_views for the current post
-    pos.counted_views += 1
-    pos.save()
-    context = {'post': pos}
+    current_post.counted_views += 1
+    current_post.save()
+    context = {'post': current_post,
+               'next_post': next_post,
+               'prev_post': prev_post,
+               }
+
 
     return render(request, 'blog/blog-single.html', context)
 

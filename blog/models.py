@@ -33,4 +33,6 @@ class post(models.Model):
     def __str__(self):
         return self.title
 
-
+    # a funtion to a summerize of content
+    def snippets(self):
+        return self.content[:250] + '...'
