@@ -97,7 +97,7 @@
                             {% for cat in post.category.all %}
                             <a href="#"> {{cat.name}} </a> {% if not  forloop.last %},{% endif %}
                             {% endfor %}
-                            
+
                         </ul>
                         <div class="user-details row">
                             <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
