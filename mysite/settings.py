@@ -36,9 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'website',
     'blog'
 ]
+# this from sites module. need for deploying
+SITE_ID = 3
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
