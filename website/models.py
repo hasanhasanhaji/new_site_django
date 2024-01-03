@@ -5,12 +5,19 @@ from django.db import models
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
-    subject = models.CharField(max_length=255, default='Default subject')
-    message = models.TextField(default='default message')
-    email = models.EmailField(default='Default email')
+    subject = models.CharField(max_length=255, default='')
+    message = models.TextField(default='')
+    email = models.EmailField(default='info@yahoo.com')
     created_date = models.DateTimeField(auto_now= True)
     updated_date = models.DateTimeField(auto_now= True)
 
     def __str__(self):
         return self.name
+
+
+class Newsletter(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email
 
