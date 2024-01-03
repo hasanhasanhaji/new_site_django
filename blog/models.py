@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.
@@ -36,3 +37,6 @@ class post(models.Model):
     # a funtion to a summerize of content
     def snippets(self):
         return self.content[:250] + '...'
+
+    def get_absolute_url(self):  # Its for blog site map
+        return reverse('blog:single', kwargs={'pid': self.id})
