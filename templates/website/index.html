@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load blog_tags %}
 {% block content %}
 
 			<!-- start banner Area -->
@@ -174,7 +174,8 @@
 				</div>
 			</section>
 			<!-- End home-about Area -->
-			{% include 'website/index-blog-area.html' %}
+
+			{% latestblogslider %}
 
 
 
