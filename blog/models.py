@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -18,7 +19,7 @@ class post(models.Model):
     title = models.CharField(max_length=255, default='Default Title')
     content = models.TextField()
 
-    # tag
+    tag = TaggableManager()      # its from taggit module
     category = models.ManyToManyField(Category, )
 
     counted_views = models.IntegerField(default=0)
