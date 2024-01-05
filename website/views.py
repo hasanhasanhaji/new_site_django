@@ -18,7 +18,10 @@ def about_view(request):
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        print(form.data)
         if form.is_valid():
+            # Set the subject field to None before saving
+            form.instance.name = "Nashenas"
             form.save()
             messages.add_message(request, messages.SUCCESS, "Your ticket submitted very well")
         else:
