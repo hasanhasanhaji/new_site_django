@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'taggit',
+    'django_summernote',
     "debug_toolbar",
     'robots',
     'website',
@@ -46,6 +47,11 @@ INSTALLED_APPS = [
 ]
 # this from sites module. need for deploying
 SITE_ID = 3
+
+# summernote configue
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,10 +141,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # for debugger toolbar
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
     # ...
 ]
+
+# for summernote security
+X_FRAME_OPTIONS = 'SAMEORIGIN'
