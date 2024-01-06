@@ -6,7 +6,7 @@ from django.db import models
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
-    subject = models.CharField(max_length=255, default='')
+    subject = models.CharField(max_length=255, default='', null=True, blank=True)
     message = models.TextField(default='')
     email = models.EmailField(default='info@yahoo.com')
     created_date = models.DateTimeField(auto_now=True)
