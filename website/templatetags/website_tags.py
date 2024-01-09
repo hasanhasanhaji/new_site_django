@@ -8,5 +8,4 @@ register = template.Library()
 @register.inclusion_tag('website/index-blog-area.html')
 def latestblogslider(arg=6):
     posts = post.objects.filter(status=1, published_date__lte=timezone.now()).order_by('-published_date')[:arg]
-    print(posts)
     return {'posts': posts}
